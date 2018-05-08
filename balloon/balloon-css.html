@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Balloon.css — CSS tooltips for HTML elements</title>
+    <link rel="icon" href="https://kazzkiq.github.io/balloon.css/favicon.ico">
+    <link rel="stylesheet" href="balloon-style.css">
+    <style>
+        html,
+        body {
+            font-size: 10px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffd748;
+            color: #20194a;
+            font-family: 'Roboto Slab', sans-serif;
+            padding-top: 6rem;
+        }
+
+        .container {
+            width: 1050px;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: #24292e;
+            outline: none;
+        }
+
+        h2 {
+            font-size: 3.1rem;
+            margin: 2rem 0 0;
+        }
+
+        p {
+            margin: 1.5rem 0;
+            font-size: 2.1rem;
+            line-height: 3.4rem;
+            font-weight: 300;
+        }
+
+
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .logo>img {
+            width: 270px;
+            height: 79.4px;
+            float: left;
+        }
+
+
+        .star-number {
+            float: left;
+            /* border: 1px solid black; */
+            margin-top: 4.3rem;
+            margin-left: 8rem;
+        }
+
+        .star-number>a {
+            font-size: 12px;
+            height: 26px;
+            line-height: 26px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 2.75px;
+        }
+
+        .btn {
+            border: 1px solid #eff3f6;
+            padding: 0 10px;
+            text-align: center;
+            background-color: #eff3f6;
+        }
+
+        .star {
+            vertical-align: middle;
+            margin-bottom: 3px;
+        }
+
+        .btn:hover {
+            background-color: #e6ebf1;
+            border: 1px solid #d1d2d3;
+        }
+
+        .number {
+            border: 1px solid #d1d2d3;
+            margin-left: 7px;
+            padding: 0 6px;
+            background-color: #fff;
+            position: relative;
+            display: block;
+        }
+
+        .number-arrow {
+            width: 0;
+            height: 0;
+            content: ' ';
+            border: 6px solid transparent;
+            border-right-color: #fff;
+            position: absolute;
+            /* left:-12px; */
+            top: 25%;
+            left: -25%;
+        }
+
+        .button {
+            display: inline-block;
+            min-width: width 240px;
+            text-align: center;
+            vertical-align: middle;
+            color: #fff;
+            background-color: #ff3d2e;
+            padding: 1.5rem 3.5rem;
+            font-size: 2.1rem;
+            margin-top: 1.5rem;
+        }
+
+        .button+.button {
+            margin-left: 2rem;
+        }
+
+        .ad {
+            max-width: 142px;
+            border: 1px solid #e2a345;
+            padding: 5px;
+            border-radius: 3px;
+            margin-top: 9.2rem;
+            margin-left: 10px;
+            float: left;
+        }
+
+        .ad .carbon-text {
+            font-size: 1.3rem;
+            margin: 1rem 0;
+        }
+
+        .ad .carbon-poweredby {
+            display: block;
+            margin: 2px;
+            text-align: center;
+            border-top: 1px solid rgba(226, 163, 69, 0.23);
+            color: #a27b3f;
+            padding-top: 4px;
+        }
+
+        .header-text {
+            width: 80%;
+            /* border: 2px solid red; */
+            float: left;
+        }
+
+        header::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        code {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 0.3rem;
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        main {
+            margin-top: 6rem;
+            font-size: 0;
+        }
+
+        main h2 {
+            margin-top: 5rem;
+        }
+
+        .sample {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+
+        .sample h2 {
+            margin-top: 5rem;
+        }
+
+        .sample pre {
+            display: inline-block;
+            width: 60%;
+        }
+
+        .sample pre code {
+            display: block;
+            background-color: #fff;
+            color: #222;
+            font-size: 1.4rem;
+            padding: 2.5rem 1.5rem;
+            overflow-x: auto;
+        }
+
+        .token .tag,
+        .attr-name,
+        .punctuation {
+            color: #0091FF;
+        }
+
+        .attr-value {
+            color: #FF3D2E;
+        }
+
+        .example {
+            display: inline-block;
+            width: 30%;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .example button {
+            display: inline-block;
+            min-width: 160px;
+            text-align: center;
+            color: #fff;
+            background-color: #FF3D2E;
+            padding: 1.2rem 2.8rem;
+            font-size: 1.6rem;
+            margin-top: 1.5rem;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.1s linear;
+        }
+
+        hr {
+            border: none;
+            height: 10px;
+            background-color: #FF3D2E;
+            margin: 7rem 0;
+        }
+
+        footer {
+            background-color: #FF3D2E;
+            color: #fff;
+            margin-top: 72px;
+            padding: 15px;
+            text-align: center;
+            font-size: 10px;
+        }
+        
+        header a[data-balloon-pos="up"]::after {
+
+     border-top-color: rgba(17, 17, 17, 0.9);
+    left: 50%;
+    transform: translate(-50%, -1.5rem);
+}
+
+header a[data-balloon-pos="up"]:hover::before {
+    left: 50%;
+    opacity: 1;
+    transform: translate(-50%, -1.3rem);
+}
+header a[data-balloon-pos="up"]:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -2.8rem);
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header>
+            <!-- 左边文本部分左浮动 -->
+            <div class="header-text">
+                <!-- 包含logo的块 -->
+                <div class="logo clearfix">
+                    <img src="https://kazzkiq.github.io/balloon.css/assets/img/logo.svg" alt="">
+                    <div class="star-number">
+                        <a href="#" class="btn">
+                            <svg version="1.1" width="14" height="16" viewBox="0 0 14 16" class="star" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path>
+                            </svg>
+                            <span>Star</span>
+                        </a>
+                        <a href="#" class="number">
+                            <div class="number-arrow"></div>
+                            <span>3,771</span>
+                        </a>
+                    </div>
+                </div>
+                <h2>Simple tooltips made of pure CSS</h2>
+                <p>Balloon.css lets you add tooltips to elements
+                    <b>without JavaScript</b> and in just a few lines of CSS.
+                    <br>
+                </p>
+                <a href="https://github.com/kazzkiq/balloon.css" class="button" data-balloon="https://github.com/kazzkiq/balloon.css" data-balloon-pos="up">Github Project</a>
+                <a href="https://github.com/kazzkiq/balloon.css/blob/master/balloon.css" class="button" data-balloon="For minified version, visit Github"
+                    data-balloon-pos="up">Download CSS</a>
+            </div>
+            <!-- 右边广告部分，右浮动 -->
+            <div class="ad">
+                <span>
+                    <a href="">
+                        <img src="https://assets.servedby-buysellads.com/p/manage/asset/id/28536" heigth="100" width="130" alt="">
+                    </a>
+                    <a href="https://www.graphicstock.com/join/browse?utm_campaign=AFFGS-BSACPA-affiliate-site1-joinbrowse&amp;utm_medium=affiliate&amp;utm_source=AFFGS-BSACPA-affiliate-site1-joinbrowse"
+                        class="carbon-text" target="_blank" rel="noopener">90% Unlimited Downloads Choose from Over 300,000 Vectors, Graphics &amp; Photos.</a>
+                </span>
+                <a href="http://carbonads.net/?utm_source=kazzkiqgithubio&amp;utm_medium=ad_via_link&amp;utm_campaign=in_unit&amp;utm_term=carbon"
+                    class="carbon-poweredby" target="_blank">ads via Carbon</a>
+            </div>
+        </header>
+        <!-- 主体部分 -->
+        <main>
+            <h2>Positioning</h2>
+            <p>For positioning, use
+                <code>data-balloon-pos</code> attribute with one of the values:
+                <code>up</code>,
+                <code>down</code>,
+                <code>left</code> or
+                <code>right</code>
+            </p>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Whats up!<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>up<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Hover me!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon="Whats up!" data-balloon-pos="up">Hover me!</button>
+                </div>
+            </div>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Whats up!<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Hover me!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon="Whats up!" data-balloon-pos="left">Hover me!</button>
+                </div>
+            </div>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Whats up!<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Hover me!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon="Whats up!" data-balloon-pos="right">Hover me!</button>
+                </div>
+            </div>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Whats up!<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>down<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Hover me!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon="Whats up!" data-balloon-pos="down">Hover me!</button>
+                </div>
+            </div>
+            <h2>Length</h2>
+            <p>By default, tooltips will always remain single-line no matter their length. You can change this behavior by using
+                the attribute
+                <code>data-balloon-length</code> with one of the values:
+                <code>small</code>,
+                <code>medium</code>,
+                <code>large</code> or
+                <code>fit</code>.</p>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon-length</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Hi.<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>up<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Hover me!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon="Hi" data-balloon-pos="up" data-balloon-length="small">I'm a small tooltip</button>
+                </div>
+            </div>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon-length</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>medium<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Now that<span class="token punctuation">'</span>s a super big text we have over here right? Lorem ipsum dolor sit I<span class="token punctuation">'</span>m done.<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>up<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>I'm a medium tooltip.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon="Now that's a super big text we have over here right? Lorem ipsum dolor sit I'm done." data-balloon-pos="up"
+                        data-balloon-length="medium">I'm a medium tooltip.</button>
+                </div>
+            </div>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon-length</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>large<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>What about something really big? This may surpass your window dimensions. Imagine you<span class="token punctuation">'</span>re on that boring class with that boring teacher and you didn<span class="token punctuation">'</span>t slept so well last night. Suddenly you<span class="token punctuation">'</span>re sleeping in class. Can you believe it?!<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>up<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>I'm a large tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon="What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!"
+                        data-balloon-pos="up" data-balloon-length="large">I'm a large tooltip</button>
+                </div>
+            </div>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon-length</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>xlarge<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>What about something really big? This may surpass your window dimensions. Imagine you<span class="token punctuation">'</span>re on that boring class with that boring teacher and you didn<span class="token punctuation">'</span>t slept so well last night. Suddenly you<span class="token punctuation">'</span>re sleeping in class. Can you believe it?!<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>up<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>I'm a Xlarge tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon="What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!"
+                        data-balloon-pos="up" data-balloon-length="xlarge">I'm a Xlarge tooltip</button>
+                </div>
+            </div>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon-length</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fit<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>What about something really big? This may surpass your window dimensions. Imagine you<span class="token punctuation">'</span>re on that boring class with that boring teacher and you didn<span class="token punctuation">'</span>t slept so well last night. Suddenly you<span class="token punctuation">'</span>re sleeping in class. Can you believe it?!<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>up<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>My width will fit to element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon-length="fit" data-balloon="What about something really big? This may surpass your window dimensions. Imagine you're on that boring class with that boring teacher and you didn't slept so well last night. Suddenly you're sleeping in class. Can you believe it?!"
+                        data-balloon-pos="up">My width will fit to element</button>
+                </div>
+            </div>
+            <h2>Showing tooltips programatically</h2>
+            <p>If you want to show tooltips even when user interaction isn't happening, you can simply use the
+                <code>data-balloon-visible</code> attribute:</p>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon-visible</span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>I am always visible!<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>up<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Always visible!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon-visible="" data-balloon="I am always visible!" data-balloon-pos="up">Always visible!</button>
+                </div>
+            </div>
+            <p>The attribute
+                <code>data-balloon-visible</code> can be easily added via JavaScript (e.g.
+                <code>.setAttribute()</code>), enabling you to show tooltips whenever needed. </p>
+            <h2>Glyphs and Icon Fonts</h2>
+            <p>You can also add any HTML special character to your tooltips, or even use third-party Icon fonts:</p>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>HTML special characters: &amp;#9787; &amp;#9986; &amp;#9820;<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>up<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Hover me!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon="HTML special characters: ☻ ✂ ♜" data-balloon-pos="up">Hover me!</button>
+                </div>
+            </div>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Emojis: 😀 😬 😁 😂 😃 😄 😅 😆<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>up<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Hover me!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button data-balloon="Emojis: 😀 😬 😁 😂 😃 😄 😅 😆" data-balloon-pos="up">Hover me!</button>
+                </div>
+            </div>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>font-awesome<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Font Awesome: &amp;#xf030; &amp;#xf133; &amp;#xf1fc; &amp;#xf03e; &amp;#xf1f8;<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>up<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Hover me!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span></code></pre>
+                <div class="example">
+                    <button class="font-awesome" data-balloon="Font Awesome:     " data-balloon-pos="up">Hover me!</button>
+                </div>
+            </div>
+            <hr>
+            <h2>How to use</h2>
+            <p>Simply call
+                <b>Balloon.css</b> to your HTML:</p>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>path/to/balloon.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
+            </div>
+            <p>Alternatively, you can use it via CDN (provided by cdnjs):</p>
+
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
+            </div>
+
+            <p>And add the attributes
+                <code>data-balloon</code> and
+                <code>data-balloon-pos</code> to your HTML elements:</p>
+            <div class="sample">
+                <pre class="  language-markup"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">data-balloon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>I<span class="token punctuation">'</span>m a tooltip.<span class="token punctuation">"</span></span> <span class="token attr-name">data-balloon-pos</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>up<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Blablabla<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </div>
+            <hr>
+            <h2>Drawbacks</h2>
+            <p>Balloon.css make use of pseudo-elements thus self-closing elements such as
+                <b>&lt;img&gt;</b>,
+                <b>&lt;input&gt;</b>
+                and
+                <b>&lt;hr&gt;</b> will not render tooltips.</p>
+            <p>Also keep in mind that if pseudo elements are already in use on an element, the tooltip will conflict with them
+                resulting in potential bugs.</p>
+
+        </main>
+    </div>
+    <footer>
+        <p>
+            Made by Claudio Holanda
+            <a href="https://twitter.com/kazzkiq">@kazzkiq</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+[data-balloon] {
+    position: relative;
+    cursor: pointer;
+}
+
+
+/* before生成黑色底的气泡 */
+
+[data-balloon]::before {
+    content: attr(data-balloon);
+    background: rgba(17, 17, 17, 1.0);
+    color: #fff;
+    font-size: 12px!important;
+    padding: 6px 12px;
+    border-radius: 4px;
+    position: absolute;
+    white-space: nowrap;
+    opacity: 0;
+}
+
+
+/* after生成黑色小三角形 */
+
+[data-balloon]::after {
+    content: '';
+    font-size: 15px!important;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    position: absolute;
+    z-index: 10;
+    opacity: 0;
+}
+
+
+/* 可以合并的before伪元素的位置的居中 ——上下*/
+
+[data-balloon-pos="up"]::before,
+[data-balloon-pos="down"]::before {
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+
+/* 可以合并的before伪元素的位置的居中——左右 */
+
+ [data-balloon-pos="left"]::before,
+[data-balloon-pos="right"]::before {
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+
+/* 可以合并的上下移动的hover位移 */
+
+ [data-balloon][data-balloon-pos="up"]:hover::before,
+[data-balloon-pos="up"]:hover::after,
+[data-balloon-pos="down"]:hover::before,
+[data-balloon-pos="down"]:hover::after {
+    opacity: 1!important;
+    transition: all 0.18s ease-out 0.18s;
+    left: 50%;
+}
+
+
+/* 可以合并的左右移动的hover位移 */
+
+[data-balloon][data-balloon-pos="left"]:hover::before,
+ [data-balloon-pos="left"]:hover::after,
+ [data-balloon-pos="right"]:hover::before,
+ [data-balloon-pos="right"]:hover::after {
+    opacity: 1!important;
+    transition: all 0.18s ease-out 0.18s;
+    top: 50%;
+}
+
+
+/* 向上浮动的气泡 */
+
+.example [data-balloon-pos="up"]::after {
+    border-top-color: rgba(17, 17, 17, 0.9);
+    left: 50%;
+    transform: translate(-50%, -1.3rem);
+}
+
+.example [data-balloon-pos="up"]:hover::before {
+    transform: translate(-50%, -1.3rem);
+}
+
+.example [data-balloon-pos="up"]:hover::after {
+    transform: translate(-50%, -2.6rem);
+}
+
+
+/* 向下浮动的气泡 */
+
+.example [data-balloon-pos="down"]::after {
+    border-bottom-color: rgba(17, 17, 17, 0.9);
+    left: 50%;
+    transform: translate(-50%, 1.7rem);
+}
+
+.example [data-balloon-pos="down"]:hover::before {
+    transform: translate(-50%, 1.3rem);
+}
+
+.example [data-balloon-pos="down"]:hover::after {
+    transform: translate(-50%, 3.0rem);
+}
+
+
+/* 向左浮动的气泡 */
+
+.example [data-balloon-pos="left"]::after {
+    border-left-color: rgba(17, 17, 17, 0.9);
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+}
+
+.example [data-balloon-pos="left"]:hover::before,
+.example [data-balloon-pos="left"]:hover::after {
+    transform: translate(-1.2rem, -50%);
+}
+
+
+/* 向右浮动的气泡 */
+
+.example [data-balloon-pos="right"]::after {
+    border-right-color: rgba(17, 17, 17, 0.9);
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+}
+
+.example [data-balloon-pos="right"]:hover::before,
+.example [data-balloon-pos="right"]:hover::after {
+    transform: translate(1.2rem, -50%);
+}
+
+
+/* 可以合并的左右位移 */
+
+.example [data-balloon-pos="left"]:hover::before， .example [data-balloon-pos="left"]:hover::after， .example [data-balloon-pos="right"]:hover::before,
+.example [data-balloon-pos="right"]:hover::after {
+    top: 50%;
+    opacity: 1;
+    transition: all 0.18s ease-out 0.18s;
+}
+
+
+/* 气泡长度控制 */
+
+[data-balloon-length="small"]::before {
+    white-space: normal!important;
+    width: 80px;
+}
+
+[data-balloon-length="medium"]::before {
+    white-space: normal!important;
+    width: 150px;
+}
+
+[data-balloon-length="large"]::before {
+    white-space: normal!important;
+    width: 260px;
+}
+
+[data-balloon-length="xlarge"]::before {
+    white-space: normal!important;
+    width: 380px;
+}
+
+[data-balloon-length="fit"]::before {
+    white-space: normal!important;
+    width: 100%;
+}
+
+
+/* 气泡一直显示可见 */
+
+[data-balloon][data-balloon-pos="up"][data-balloon-visible]:before {
+    opacity: 1 ;
+    transform: translate(-50%, -1.3rem);
+}
+
+[data-balloon][data-balloon-pos="up"][data-balloon-visible]:after {
+    opacity: 1;
+    transform: translate(-50%, -2.6rem);
+}
+
+
+/* 可以单独提出的位移 */
+
+[data-balloon-pos="up"]::before {
+    bottom: 100%;
+}
+
+[data-balloon-pos="down"]::before {
+    top: 100%;
+}
+
+[data-balloon-pos="left"]::before {
+    right: 100%;
+}
+
+[data-balloon-pos="right"]::before {
+    left: 100%;
+}
